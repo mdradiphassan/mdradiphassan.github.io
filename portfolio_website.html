@@ -1,0 +1,777 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Md Radip Hassan - Data Analyst & BI Developer</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.6;
+            color: #e5e7eb;
+            background: #000000;
+            overflow-x: hidden;
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(0, 0, 0, 0.98);
+            backdrop-filter: blur(10px);
+            padding: 1.2rem 5%;
+            z-index: 1000;
+            border: 1px solid rgba(102, 126, 234, 0.2);
+        }
+
+        nav ul {
+            display: flex;
+            justify-content: center;
+            gap: 2.5rem;
+            list-style: none;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: #9ca3af;
+            font-weight: 500;
+            font-size: 0.95rem;
+            transition: all 0.3s;
+            position: relative;
+            letter-spacing: 0.5px;
+        }
+
+        nav a:hover {
+            color: #667eea;
+        }
+
+        nav a::after {
+            content: '';
+            position: absolute;
+            bottom: -8px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: linear-gradient(90deg, #667eea, #764ba2);
+            transition: width 0.3s;
+        }
+
+        nav a:hover::after {
+            width: 100%;
+        }
+
+        /* Hero Section - Asymmetric Design */
+        .hero {
+            min-height: 100vh;
+            display: grid;
+            grid-template-columns: 1.2fr 0.8fr;
+            align-items: center;
+            padding: 6rem 5% 4rem;
+            gap: 4rem;
+            background: 
+                linear-gradient(135deg, rgba(102, 126, 234, 0.03) 0%, transparent 50%),
+                radial-gradient(ellipse at top right, rgba(118, 75, 162, 0.08) 0%, transparent 60%);
+            position: relative;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 20%;
+            right: -10%;
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(102, 126, 234, 0.08) 0%, transparent 70%);
+            border-radius: 50%;
+            filter: blur(60px);
+            pointer-events: none;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero-label {
+            display: inline-block;
+            padding: 0.5rem 1.5rem;
+            background: rgba(102, 126, 234, 0.1);
+            border: 1px solid rgba(102, 126, 234, 0.3);
+            border-radius: 30px;
+            color: #667eea;
+            font-size: 0.9rem;
+            margin-bottom: 2rem;
+            font-weight: 500;
+            animation: fadeInUp 0.8s ease;
+        }
+
+        .hero-content h1 {
+            font-size: 4.5rem;
+            margin-bottom: 1.5rem;
+            font-weight: 700;
+            line-height: 1.1;
+            animation: fadeInUp 1s ease 0.2s backwards;
+        }
+
+        .hero-content h1 .highlight {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero-content .subtitle {
+            font-size: 1.4rem;
+            color: #9ca3af;
+            margin-bottom: 2rem;
+            font-weight: 400;
+            animation: fadeInUp 1s ease 0.4s backwards;
+        }
+
+        .hero-stats {
+            display: flex;
+            gap: 3rem;
+            margin-top: 3rem;
+            animation: fadeInUp 1s ease 0.6s backwards;
+        }
+
+        .stat-item {
+            border-left: 2px solid #667eea;
+            padding-left: 1rem;
+        }
+
+        .stat-number {
+            font-size: 2rem;
+            font-weight: 700;
+            color: #667eea;
+            display: block;
+        }
+
+        .stat-label {
+            color: #6b7280;
+            font-size: 0.9rem;
+        }
+
+        .hero-side {
+            background: rgba(17, 17, 17, 0.8);
+            border: 1px solid rgba(102, 126, 234, 0.15);
+            border-radius: 20px;
+            padding: 2.5rem;
+            backdrop-filter: blur(10px);
+            position: relative;
+            animation: fadeInRight 1s ease 0.8s backwards;
+        }
+
+        .hero-side::before {
+            content: '';
+            position: absolute;
+            top: -1px;
+            right: -1px;
+            width: 100px;
+            height: 100px;
+            background: linear-gradient(135deg, #667eea 0%, transparent 70%);
+            border-radius: 0 20px 0 0;
+            opacity: 0.3;
+        }
+
+        .contact-info-hero {
+            display: flex;
+            flex-direction: column;
+            gap: 1.2rem;
+        }
+
+        .contact-info-hero h3 {
+            color: #667eea;
+            margin-bottom: 0.5rem;
+            font-size: 1.3rem;
+        }
+
+        .contact-info-hero a {
+            color: #9ca3af;
+            text-decoration: none;
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            font-size: 0.95rem;
+        }
+
+        .contact-info-hero a:hover {
+            color: #667eea;
+            transform: translateX(5px);
+        }
+
+        /* Education Section - Grid Layout */
+        .education {
+            padding: 5rem 5%;
+            background: rgba(17, 17, 17, 0.5);
+        }
+
+        .section-title {
+            font-size: 3rem;
+            margin-bottom: 3rem;
+            font-weight: 700;
+            position: relative;
+            display: inline-block;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 0;
+            width: 60%;
+            height: 3px;
+            background: linear-gradient(90deg, #667eea, transparent);
+        }
+
+        .education-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2rem;
+            max-width: 1200px;
+        }
+
+        .education-card {
+            background: linear-gradient(135deg, rgba(30, 30, 30, 0.8) 0%, rgba(17, 17, 17, 0.8) 100%);
+            border: 1px solid rgba(102, 126, 234, 0.2);
+            border-radius: 15px;
+            padding: 2.5rem;
+            transition: all 0.4s;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .education-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 4px;
+            height: 0;
+            background: linear-gradient(180deg, #667eea, #764ba2);
+            transition: height 0.4s;
+        }
+
+        .education-card:hover::before {
+            height: 100%;
+        }
+
+        .education-card:hover {
+            transform: translateY(-5px);
+            border-color: rgba(102, 126, 234, 0.5);
+            box-shadow: 0 20px 40px rgba(102, 126, 234, 0.1);
+        }
+
+        .education-card h3 {
+            color: #667eea;
+            font-size: 1.6rem;
+            margin-bottom: 0.8rem;
+        }
+
+        .education-card .degree {
+            color: #e5e7eb;
+            font-size: 1.2rem;
+            margin-bottom: 0.8rem;
+            font-weight: 500;
+        }
+
+        .education-card .location {
+            color: #6b7280;
+            margin-bottom: 0.5rem;
+        }
+
+        .education-card .date {
+            color: #9ca3af;
+            font-size: 0.9rem;
+        }
+
+        /* Projects Section with Images */
+        .projects {
+            padding: 5rem 5%;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .projects-grid {
+            display: grid;
+            gap: 3rem;
+        }
+
+        .project-showcase {
+            background: linear-gradient(135deg, rgba(30, 30, 30, 0.6) 0%, rgba(17, 17, 17, 0.6) 100%);
+            border: 1px solid rgba(102, 126, 234, 0.15);
+            border-radius: 20px;
+            overflow: hidden;
+            transition: all 0.4s;
+        }
+
+        .project-showcase:hover {
+            border-color: rgba(102, 126, 234, 0.4);
+            box-shadow: 0 25px 50px rgba(102, 126, 234, 0.15);
+            transform: translateY(-8px);
+        }
+
+        .project-image-container {
+            width: 100%;
+            height: 500px;
+            overflow: hidden;
+            position: relative;
+            background: #0a0a0a;
+        }
+
+        .project-image-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            transition: transform 0.5s;
+        }
+
+        .project-showcase:hover .project-image-container img {
+            transform: scale(1.05);
+        }
+
+        .project-details {
+            padding: 2.5rem;
+        }
+
+        .project-details h3 {
+            color: #667eea;
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+        }
+
+        .project-details p {
+            color: #9ca3af;
+            margin-bottom: 1.5rem;
+            line-height: 1.8;
+            font-size: 1.05rem;
+        }
+
+        .project-tags {
+            display: flex;
+            gap: 0.8rem;
+            flex-wrap: wrap;
+        }
+
+        .tag {
+            background: rgba(102, 126, 234, 0.1);
+            color: #667eea;
+            padding: 0.5rem 1.2rem;
+            border-radius: 25px;
+            font-size: 0.85rem;
+            border: 1px solid rgba(102, 126, 234, 0.3);
+            font-weight: 500;
+        }
+
+        /* Experience Section - Timeline Style */
+        .experience {
+            padding: 5rem 5%;
+            background: rgba(17, 17, 17, 0.5);
+        }
+
+        .experience-timeline {
+            max-width: 1000px;
+            margin: 0 auto;
+            position: relative;
+            padding-left: 3rem;
+        }
+
+        .experience-timeline::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: linear-gradient(180deg, #667eea, rgba(102, 126, 234, 0.2));
+        }
+
+        .experience-item {
+            position: relative;
+            margin-bottom: 3rem;
+            padding-left: 2rem;
+        }
+
+        .experience-item::before {
+            content: '';
+            position: absolute;
+            left: -3.5rem;
+            top: 0;
+            width: 15px;
+            height: 15px;
+            background: #667eea;
+            border: 3px solid #000;
+            border-radius: 50%;
+        }
+
+        .experience-item h3 {
+            color: #667eea;
+            font-size: 1.5rem;
+            margin-bottom: 0.3rem;
+        }
+
+        .experience-item .company {
+            color: #9ca3af;
+            font-size: 1.1rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .experience-item .date {
+            color: #6b7280;
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+        }
+
+        .experience-item ul {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .experience-item li {
+            color: #9ca3af;
+            margin-bottom: 0.8rem;
+            padding-left: 1.5rem;
+            position: relative;
+        }
+
+        .experience-item li::before {
+            content: '◆';
+            position: absolute;
+            left: 0;
+            color: #667eea;
+        }
+
+        /* Skills Section - Compact */
+        .skills {
+            padding: 5rem 5%;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .skills-compact {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .skill-category-compact {
+            background: rgba(30, 30, 30, 0.5);
+            border: 1px solid rgba(102, 126, 234, 0.15);
+            border-radius: 12px;
+            padding: 1.5rem;
+            transition: all 0.3s;
+        }
+
+        .skill-category-compact:hover {
+            border-color: rgba(102, 126, 234, 0.4);
+            transform: translateY(-3px);
+        }
+
+        .skill-category-compact h3 {
+            color: #667eea;
+            font-size: 1.1rem;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .skill-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+
+        .skill-item {
+            background: rgba(102, 126, 234, 0.08);
+            color: #9ca3af;
+            padding: 0.4rem 0.9rem;
+            border-radius: 15px;
+            font-size: 0.85rem;
+            border: 1px solid rgba(102, 126, 234, 0.2);
+        }
+
+        /* Footer */
+        footer {
+            padding: 2.5rem 5%;
+            text-align: center;
+            background: #000000;
+            color: #6b7280;
+            border-top: 1px solid rgba(102, 126, 234, 0.1);
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInRight {
+            from {
+                opacity: 0;
+                transform: translateX(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        /* Responsive */
+        @media (max-width: 1024px) {
+            .hero {
+                grid-template-columns: 1fr;
+                padding: 5rem 5% 3rem;
+            }
+
+            .hero-content h1 {
+                font-size: 3rem;
+            }
+
+            .education-grid,
+            .projects-grid {
+                grid-template-columns: 1fr;
+            }
+
+            nav ul {
+                gap: 1.5rem;
+                font-size: 0.85rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .hero-content h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero-stats {
+                flex-direction: column;
+                gap: 1.5rem;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+
+            .project-image-container {
+                height: 300px;
+            }
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <ul>
+            <li><a href="#home">Home</a></li>
+            <li><a href="#education">Education</a></li>
+            <li><a href="#projects">Projects</a></li>
+            <li><a href="#experience">Experience</a></li>
+            <li><a href="#skills">Skills</a></li>
+        </ul>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <div class="hero-label">Data Analyst & BI Developer</div>
+            <h1>
+                <span class="highlight">Md Radip Hassan</span><br>
+                Data Analyst & BI Developer
+            </h1>
+            <p class="subtitle">Transforming complex data into actionable insights through visualization and analytics</p>
+            
+            <div class="hero-stats">
+                <div class="stat-item">
+                    <span class="stat-number">2+</span>
+                    <span class="stat-label">Years Experience</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number">25%</span>
+                    <span class="stat-label">Engagement Boost</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number">3M+</span>
+                    <span class="stat-label">Audience Managed</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="hero-side">
+            <div class="contact-info-hero">
+                <h3>Get In Touch</h3>
+                <a href="tel:314-319-8945">314-319-8945</a>
+                <a href="mailto:mdradiphassan@gmail.com">mdradiphassan@gmail.com</a>
+		<a href="mailto:radiphassan29@gmail.com">radiphassan29@gmail.com</a>
+                <a href="https://linkedin.com/in/radiphassan/" target="_blank">LinkedIn Profile</a>
+                <a href="#" style="color: #6b7280; cursor: default;">St Louis, Missouri</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Education Section -->
+    <section id="education" class="education">
+        <h2 class="section-title">Education</h2>
+        <div class="education-grid">
+            <div class="education-card">
+                <h3>Saint Louis University</h3>
+                <p class="degree">Master of Science in Information Systems</p>
+                <p class="location">St Louis, Missouri</p>
+                <p class="date">August 2023 – May 2025</p>
+            </div>
+
+            <div class="education-card">
+                <h3>BRAC University</h3>
+                <p class="degree">Bachelor of Science in Computer Science</p>
+                <p class="location">Dhaka, Bangladesh</p>
+                <p class="date">January 2019 – December 2022</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section with Real Dashboard Images -->
+    <section id="projects" class="projects">
+        <h2 class="section-title">Data Visualization Projects</h2>
+        <div class="projects-grid">
+            
+            <!-- Project 1: Jobs in Data -->
+            <div class="project-showcase">
+                <div class="project-image-container">
+                    <img src="Jobs in Data Positions.jpg" alt="Jobs in Data Position Dashboard" style="border: 1px solid rgba(212, 175, 55, 0.2);">
+                </div>
+                <div class="project-details">
+                    <h3>Jobs in Data Position - Interactive Dashboard</h3>
+                    <p>Comprehensive data analytics dashboard analyzing job positions in the data science field. Features include salary comparisons by job title and sector, job distribution across industries, and skills analysis for various data roles. Created interactive visualizations with filtering capabilities to explore trends in the data job market.</p>
+                    <div class="project-tags">
+                        <span class="tag">Power BI</span>
+                        <span class="tag">Data Analysis</span>
+                        <span class="tag">SQL</span>
+                        <span class="tag">Market Research</span>
+                        <span class="tag">Interactive Dashboards</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Project 2: Health Insurance -->
+            <div class="project-showcase">
+                <div class="project-image-container">
+                    <img src="Health Insurance Coverage.png" alt="Health Insurance Coverage Dashboard" style="border: 1px solid rgba(212, 175, 55, 0.2);">
+                </div>
+                <div class="project-details">
+                    <h3>Analyzing Health Insurance Coverage Disparities in the United States</h3>
+                    <p>In-depth analysis of health insurance coverage disparities across the United States from 2010-2023. Developed interactive visualizations showing uninsured rates by state, coverage type trends over time, demographic distributions, and income level comparisons. Includes geospatial mapping and time-series analysis to identify patterns in healthcare access.</p>
+                    <div class="project-tags">
+                        <span class="tag">Power BI</span>
+                        <span class="tag">Statistical Analysis</span>
+                        <span class="tag">Geographic Mapping</span>
+                        <span class="tag">Policy Analysis</span>
+                        <span class="tag">Data Storytelling</span>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Experience Section -->
+    <section id="experience" class="experience">
+        <h2 class="section-title">Professional Experience</h2>
+        <div class="experience-timeline">
+            
+            <div class="experience-item">
+                <h3>Social Media Analyst</h3>
+                <p class="company">10 Minute School</p>
+                <p class="date">April 2021 – July 2023 | Dhaka, Bangladesh</p>
+                <ul>
+                    <li>Managed multiple social media platforms with cumulative reach of 3M+ followers during undergraduate studies</li>
+                    <li>Designed and executed data-driven digital campaigns that increased engagement by 25%</li>
+                    <li>Collaborated with cross-functional teams for successful product launches and promotional campaigns</li>
+                    <li>Leveraged analytics tools to assess campaign performance, identify trends, and provide actionable recommendations</li>
+                </ul>
+            </div>
+
+            <div class="experience-item">
+                <h3>General Secretary</h3>
+                <p class="company">Football Club of BRAC University</p>
+                <p class="date">January 2023 – December 2023 | Dhaka, Bangladesh</p>
+                <ul>
+                    <li>Organized 4+ high-impact sports events with 300+ participants each, demonstrating project management skills</li>
+                    <li>Streamlined club operations and ensured clear communication with university administration</li>
+                    <li>Secured sponsorships and managed relationships with corporate partners</li>
+                </ul>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Skills Section - Compact -->
+    <section id="skills" class="skills">
+        <h2 class="section-title">Technical Skills</h2>
+        <div class="skills-compact">
+            
+            <div class="skill-category-compact">
+                <h3>Analytics & BI</h3>
+                <div class="skill-list">
+                    <span class="skill-item">Power BI</span>
+                    <span class="skill-item">Tableau</span>
+                    <span class="skill-item">Excel</span>
+                    <span class="skill-item">IBM SPSS</span>
+                </div>
+            </div>
+
+            <div class="skill-category-compact">
+                <h3>Programming</h3>
+                <div class="skill-list">
+                    <span class="skill-item">Python</span>
+                    <span class="skill-item">SQL</span>
+                    <span class="skill-item">Java</span>
+                    <span class="skill-item">HTML</span>
+                </div>
+            </div>
+
+            <div class="skill-category-compact">
+                <h3>Tools</h3>
+                <div class="skill-list">
+                    <span class="skill-item">Git</span>
+                    <span class="skill-item">VS Code</span>
+                    <span class="skill-item">PyCharm</span>
+                    <span class="skill-item">MATLAB</span>
+                </div>
+            </div>
+
+            <div class="skill-category-compact">
+                <h3>Professional</h3>
+                <div class="skill-list">
+                    <span class="skill-item">Data Analysis</span>
+                    <span class="skill-item">Project Management</span>
+                    <span class="skill-item">Communication</span>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2025 Md Radip Hassan | Data Analyst & BI Developer</p>
+    </footer>
+</body>
+</html>
